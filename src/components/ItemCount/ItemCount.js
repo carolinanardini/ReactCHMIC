@@ -1,5 +1,5 @@
 import './ItemCount.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function ItemCount(props){
 
@@ -26,6 +26,8 @@ function ItemCount(props){
     }
 
     props.amount(num);
+
+    
 
   return (
 
