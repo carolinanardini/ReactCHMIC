@@ -1,6 +1,6 @@
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css';
-import {useParams} from 'react-router-dom'; 
+import {useParams, NavLink} from 'react-router-dom'; 
 import {useState, useEffect } from 'react';
 
 function ItemDetail() {
@@ -16,10 +16,13 @@ function ItemDetail() {
   }
 
 
-  // VER PARA QUE SIRVE EL USEEFFECT
   useEffect(() => {
     fetchDetail()
   }, [])
+
+  const amountHandler =(newAmount) =>{
+    console.log(newAmount);
+  }
 
   return (
     <>
@@ -40,8 +43,9 @@ function ItemDetail() {
         <p className='italic'> {detailFetch[0].descripcion2}</p>
         <p className='italic'> {detailFetch[0].descripcion3}</p>
         <p className='italic'> {detailFetch[0].descripcion4}</p>
-        <ItemCount/>
+        <ItemCount amount={amountHandler}/>
         <button className='button'>Agregar al carrito</button>
+        <button className='button'> <NavLink to='/cart'>Terminar mi compra</NavLink></button>
       </section>
 
     </div>}

@@ -15,7 +15,7 @@ function Item(props) {
           <p>{props.image}</p>
           <p>${props.price}</p>
           
-          <ItemCount/>
+          <ItemCount amount={()=>{}}/>
           <button className='button'>Agregar al carrito</button>
           <Link to={`/item/${props.id}`}><button className='button'>Ver detalle</button></Link>
         </div>
