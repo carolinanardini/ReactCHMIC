@@ -7,6 +7,7 @@ function ItemDetail() {
   
   const params =useParams()
   const [detailFetch, setDetailFetch]=useState([])
+  const [terminarCompra, setTerminarCompra]=useState(false)
 
   const fetchDetail =() => {
     fetch('/data.json')
@@ -21,7 +22,9 @@ function ItemDetail() {
   }, [])
 
   const amountHandler =(newAmount) =>{
+    setTerminarCompra(false)
     console.log(newAmount);
+    setTerminarCompra(true)
   }
 
   return (
@@ -44,8 +47,9 @@ function ItemDetail() {
         <p className='italic'> {detailFetch[0].descripcion3}</p>
         <p className='italic'> {detailFetch[0].descripcion4}</p>
         <ItemCount amount={amountHandler}/>
-        <button className='button'>Agregar al carrito</button>
-        <button className='button'> <NavLink to='/cart'>Terminar mi compra</NavLink></button>
+        <button onClick={amountHandler} className='button'>Agregar al carrito</button>
+        {terminarCompra && <button className='button'> <NavLink to='/cart'>Terminar mi compra</NavLink></button> }
+        
       </section>
 
     </div>}
