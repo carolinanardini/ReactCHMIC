@@ -1,31 +1,33 @@
 import ItemDetail from '../ItemDetail/ItemDetail.js';
 import './ItemDetailContainer.css';
+import {useParams} from 'react-router-dom'; 
 
 import { useEffect, useState } from 'react';
 
 
 function ItemDetailContainer() {
 
-  // const [detail, setDetail] =useState([])
+  const params =useParams()
+  const [detailFetch, setDetailFetch]=useState([])
+ 
+
+  const fetchDetail =() => {
+    fetch('/data.json')
+    .then((response)=>response.json())
+    .then((data)=> {setDetailFetch(data.filter(($data)=>$data.id===Number(params.id)))
+    })
+  }
 
 
-  // useEffect(()=>{
-  //   setTimeout(() => {
-
-  //       fetch('data.json') //Trae el responde completo
-  //       .then((resp)=>resp.json()) //Extrae la informacion a utilizar
-  //       .then((data)=>setDetail(data.find(i=>i.id===1))) //Setea esa info en nuestro state      
-
-  
-  //   }, 2000);
-
-  // },[])
+  useEffect(() => {
+    fetchDetail()
+  }, [])
 
   return (
     
     <div className="">
     
-        <ItemDetail/>
+        <ItemDetail detail ={detailFetch}/>
      
 
     </div>
