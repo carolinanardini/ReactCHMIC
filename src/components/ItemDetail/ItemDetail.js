@@ -1,11 +1,12 @@
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css';
-import {useParams, NavLink} from 'react-router-dom'; 
+import {useParams, NavLink, Link} from 'react-router-dom'; 
 import {useState, useEffect } from 'react';
 
 function ItemDetail(props) {
   
   const [terminarCompra, setTerminarCompra] = useState(false)
+  const [desaparecer, setDesaparecer] = useState(true)
 
   const amountHandler =(newAmount) =>{
 
@@ -15,6 +16,7 @@ function ItemDetail(props) {
 
   const addToCart =()=>{
     setTerminarCompra(true)
+    setDesaparecer(false)
   }
 
   return (
@@ -36,10 +38,9 @@ function ItemDetail(props) {
         <p className='italic'> {props.detail[0].descripcion2}</p>
         <p className='italic'> {props.detail[0].descripcion3}</p>
         <p className='italic'> {props.detail[0].descripcion4}</p>
-        <ItemCount amount={amountHandler}/>
-        <button onClick={addToCart} className='button'>Agregar al carrito</button>
-        {terminarCompra && 
-        <button className='button'> <NavLink to='/cart'>Terminar mi compra</NavLink></button> }
+        {desaparecer && <ItemCount amount={amountHandler}/>}
+        <button onClick={addToCart} className='button'><a>Agregar al carrito</a></button>
+        {terminarCompra && <button className='button'> <NavLink to='/cart'>Terminar mi compra</NavLink></button> }
         
       </section>
 
