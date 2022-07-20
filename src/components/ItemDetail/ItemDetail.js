@@ -1,8 +1,8 @@
-import ItemCount from '../ItemCount/ItemCount';
+import ItemCount from '../ItemCount/ItemCount.js';
 import './ItemDetail.css';
 import {useParams, NavLink, Link} from 'react-router-dom'; 
 import {useState, useEffect, useContext } from 'react';
-import {CartContext} from '.../store/CartContext';
+import CartContext from '.../store/CartContext.js';
 
 function ItemDetail(props) {
   
