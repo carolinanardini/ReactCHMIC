@@ -1,7 +1,8 @@
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css';
 import {useParams, NavLink, Link} from 'react-router-dom'; 
-import {useState, useEffect } from 'react';
+import {useState, useEffect, useContext } from 'react';
+import {CartContext} from '.../store/CartContext';
 
 function ItemDetail(props) {
   
@@ -18,6 +19,8 @@ function ItemDetail(props) {
     setTerminarCompra(true)
     setDesaparecer(false)
   }
+
+  const {agregarAlCarrito} =useContext(CartContext);
 
   return (
     <>
